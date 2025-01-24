@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('avis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idClient')->constrained('users');
-            $table->foreignId('idReservation')->constrained('reservation');
-            $table->text('commentaire');
+/*             $table->foreignId('idReservation')->constrained('reservation');
+ */            $table->text('commentaire');
             $table->integer('evaluation')->unsigned()->between(1,5);
             $table->timestamps();
         });
