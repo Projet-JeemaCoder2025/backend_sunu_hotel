@@ -17,4 +17,8 @@ class Chambre extends Model
         'capacite',
         'disponibilite',
     ];
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'idChambre');
+    }
 }
