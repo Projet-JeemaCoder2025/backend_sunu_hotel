@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('avis', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('idClient')->constrained('users');
-            $table->foreignId('idReservation')->constrained('reservation');
-            $table->text('commentaire');
-            $table->integer('evaluation')->unsigned()->between(1,5);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('avis')) {
+            Schema::create('avis', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('idClient')->constrained('users');
+                $table->foreignId('idReservation')->constrained('reservation');
+                $table->text('commentaire');
+                $table->integer('evaluation')->unsigned()->between(1,5);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
