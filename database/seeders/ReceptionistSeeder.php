@@ -17,10 +17,10 @@ class ReceptionistSeeder extends Seeder
         User::create([
             'first_name' => 'Receptionist',
             'last_name' => 'User',
-            'email' => 'receptionist@example.com',
-            'phone_number' => '770000000',
-            'role' => 'receptionist',
-            'password' => Hash::make('password'),
+            'email' => 'receptionist2@gmail.com',
+            'phone_number' => '772221242',
+            'role' => 'receptioniste',
+            'password' => Hash::make('Passd123'),
         ]);
     }
 }

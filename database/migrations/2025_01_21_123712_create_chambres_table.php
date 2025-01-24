@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('prix');
             $table->text('description');
             $table->string('categorie');
-            $table->boolean('disponibilite')->default(true);
+            $table->enum('disponibilite', allowed: ['oui', 'non']); // Utilisation de enum            $table->timestamps();
+            $table->json('images')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chambres');
+        Schema::table('chambres', function (Blueprint $table) {
+            $table->dropForeign(['image_id']);
+            $table->dropColumn('image_id');
+        });
     }
 };
