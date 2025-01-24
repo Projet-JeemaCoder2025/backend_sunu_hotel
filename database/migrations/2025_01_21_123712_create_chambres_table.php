@@ -9,18 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('chambres', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->integer('prix');
-            $table->text('description');
-            $table->string('categorie');
-            $table->boolean('disponibilite')->default(true);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('chambres')) {
+            Schema::create('chambres', function (Blueprint $table) {
+                $table->id();
+                $table->string('nom');
+                $table->integer('prix');
+                $table->text('description');
+                $table->string('categorie');
+                $table->integer('capacite');
+                $table->enum('disponibilite', ['oui', 'non'])->default('oui');
+                $table->timestamps();
+            });
+        }
     }
+
 
     /**
      * Reverse the migrations.
